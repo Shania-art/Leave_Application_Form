@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Application Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Set Arial as the primary font for the entire form */
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            font-size: 0.875rem; /* Base font size for the body (equivalent to Tailwind's text-sm) */
+        }
+
+        /* Adjust overall container padding and box shadow */
+        .container {
+            padding: 1.5rem; /* Slightly more internal padding */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Slightly more prominent shadow */
+        }
+
+        /* Custom styles for input areas to appear as lines */
+        /* This applies to all actual <input> elements for consistency */
+        .form-input,
+        .form-inline-input {
+            /* Basic styling for a line-like input field */
+            display: inline-block; /* Keep them inline for flowing with text */
+            border: none; /* Remove all borders by default */
+            border-bottom: 1px solid #000; /* Add a bottom border to create the line */
+            background-color: transparent; /* No background fill */
+            padding: 0px 2px 2px 2px; /* Minimal padding to ensure text sits on the line */
+            font-size: 0.75rem; /* Explicitly text-xs for these inputs */
+            color: #333; /* Ensure text color is readable */
+            outline: none; /* Remove outline on focus */
+            flex-grow: 1; /* Allow inputs to grow to fill available space */
+            min-width: 50px; /* Minimum width for short lines */
+            box-sizing: border-box; /* Include padding/border in element's total width */
+        }
+
+        /* Specific adjustments for input types if needed */
+        input[type="date"].form-inline-input {
+            min-width: 100px; /* Ensure date inputs have enough space, slightly smaller for text-xs */
+            flex-grow: 0; /* Dates shouldn't stretch */
+        }
+
+        /* Specific adjustments for the longer "address" lines */
+        #addressDuringLeave, .form-inline-input.w-full {
+             width: 100%;
+             min-width: 100%; /* Ensure these always take full width */
+        }
+
+
+        /* Existing styles, potentially adjusted for the new line aesthetic */
+        .dotted-underline {
+            /* This class will now be consistent with the new line style */
+            border-bottom: 1px dotted #000;
+            display: inline-block;
+            min-width: 150px; /* Adjust as needed */
+        }
+        .form-section-title {
+            @apply text-lg font-semibold text-center mb-3 text-gray-800; /* Slightly less margin-bottom */
+        }
+        .form-group label {
+            @apply block text-sm font-medium text-gray-700 mb-1;
+        }
+        .form-inline-label {
+            /* Now text-xs for smaller font, and removed margin-right for flush lines */
+            @apply inline-block text-xs font-medium text-gray-700;
+        }
+        /* Checkbox styling remains the same as they don't use lines */
+        .checkbox-group label {
+            @apply inline-flex items-center mr-4;
+        }
+        .checkbox-group input[type="checkbox"] {
+            @apply h-4 w-4 text-indigo-600 border-gray-300 rounded;
+        }
+        /* General adjustments for reduced spacing */
+        .mb-2 { margin-bottom: 0.5rem; } /* Keeping some small vertical spacing */
+        .my-3 { margin-top: 0.75rem; margin-bottom: 0.75rem; }
+    </style>
+</head>
+<body class="bg-gray-100 p-6 text-gray-700">
+    <div class="container mx-auto bg-white p-4 rounded-lg shadow-md max-w-4xl">
+
+        <div class="mb-4 relative">
+            <img src="./images/intprologo.png" alt="Company Logo" class="h-24 w-auto float-right mb-4">
+
+            <h1 class="text-2xl font-bold text-gray-800 text-center clear-right">LEAVE APPLICATION FORM</h1>
+        </div>
+
+        <hr class="my-3 border-t-2 border-gray-200">
+
+        <div class="mb-4">
+            <h2 class="form-section-title text-left">1. <span class="font-bold">Employee Details</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mb-2">
+                <div class="flex items-center flex-wrap">
+                    <label for="fullName" class="form-inline-label">Full Name (Mr./Mrs./Ms./Miss)</label>
+                    <input type="text" id="fullName" class="form-inline-input flex-grow" aria-label="Full Name">
+                </div>
+                <div class="flex items-center flex-wrap md:justify-end">
+                    <label for="employeeNo" class="form-inline-label">Employee No:</label>
+                    <input type="text" id="employeeNo" class="form-inline-input w-24" aria-label="Employee Number">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                <div class="flex items-center flex-wrap">
+                    <label for="post" class="form-inline-label">Post</label>
+                    <input type="text" id="post" class="form-inline-input flex-grow" aria-label="Post">
+                </div>
+                <div class="flex items-center flex-wrap">
+                    <label for="grade" class="form-inline-label">Grade</label>
+                    <input type="text" id="grade" class="form-inline-input w-24" aria-label="Grade">
+                </div>
+                <div class="flex items-center flex-wrap col-span-1 md:col-span-2">
+                    <label for="department" class="form-inline-label">Department</label>
+                    <input type="text" id="department" class="form-inline-input flex-grow" aria-label="Department">
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-3 border-t-2 border-gray-200">
+
+        <div class="mb-4">
+            <h2 class="form-section-title">2. <span class="font-bold">NATURE OF LEAVE AND NUMBER OF DAYS</span></h2>
+            <p class="text-sm text-gray-600 mb-2 italic">Note: You cannot proceed on any leave without the express written permission of the Head of Department/Supervisor.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-2 checkbox-group">
+                <label><input type="checkbox" name="leaveType" value="annual"> Annual</label>
+                <label><input type="checkbox" name="leaveType" value="cill"> CILL</label>
+                <label><input type="checkbox" name="leaveType" value="sick"> Sick</label>
+                <label><input type="checkbox" name="leaveType" value="maternity"> Maternity</label>
+                <label><input type="checkbox" name="leaveType" value="unauthorized"> Unauthorized</label>
+                <label><input type="checkbox" name="leaveType" value="special"> Special</label>
+                <label><input type="checkbox" name="leaveType" value="studyLeave"> Study Leave</label>
+                <label><input type="checkbox" name="leaveType" value="unpaid"> Unpaid</label>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mb-2">
+                <div class="flex items-center">
+                    <label for="numOfDaysLeave" class="form-inline-label">No of days leave</label>
+                    <input type="text" id="numOfDaysLeave" class="form-inline-input w-24" aria-label="Number of days leave">
+                </div>
+                <div class="flex items-center">
+                    <label for="leaveFrom" class="form-inline-label">From</label>
+                    <input type="date" id="leaveFrom" class="form-inline-input" aria-label="Leave From Date">
+                </div>
+                <div class="flex items-center col-span-1 md:col-span-2">
+                    <label for="leaveTo" class="form-inline-label">To</label>
+                    <input type="date" id="leaveTo" class="form-inline-input" aria-label="Leave To Date">
+                    <span class="ml-2">(Inclusive)</span>
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <label for="addressDuringLeave" class="form-inline-label">Address during leave</label>
+                <input type="text" id="addressDuringLeave" class="form-inline-input w-full" aria-label="Address during leave">
+                <input type="text" class="form-inline-input w-full mt-1" aria-label="Address during leave line 2">
+            </div>
+
+            <div class="mb-2 flex items-center">
+                <label for="tel" class="form-inline-label">Tel</label>
+                <input type="text" id="tel" class="form-inline-input flex-grow" aria-label="Telephone Number">
+            </div>
+
+            <div class="mb-2 flex items-center">
+                <span class="form-inline-label">Do you require salary in advance</span>
+                <label class="ml-4"><input type="radio" name="salaryAdvance" value="yes" class="mr-1"> YES</label>
+                <label class="ml-4"><input type="radio" name="salaryAdvance" value="no" class="mr-1"> NO</label>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mb-2">
+                <div class="flex items-center">
+                    <label for="applicationDate" class="form-inline-label">Date</label>
+                    <input type="date" id="applicationDate" class="form-inline-input" aria-label="Application Date">
+                </div>
+                <div class="flex items-center">
+                    <label for="requiredPaymentDate" class="form-inline-label">Required date of payment</label>
+                    <input type="date" id="requiredPaymentDate" class="form-inline-input" aria-label="Required Date of Payment">
+                </div>
+            </div>
+
+            <div class="mb-2 flex items-center">
+                <label for="applicantSignature" class="form-inline-label">Signature of Applicant</label>
+                <input type="text" id="applicantSignature" class="form-inline-input flex-grow" aria-label="Signature of Applicant">
+            </div>
+        </div>
+
+        <hr class="my-3 border-t-2 border-gray-200">
+
+        <div class="mb-4">
+            <h2 class="form-section-title text-left"><span class="font-bold">HC DEPARTMENT</span></h2>
+            <h2 class="form-section-title text-left">3. <span class="font-bold">Leave Accrued as at</span></h2>
+            <div class="flex items-center mb-2">
+                <label class="form-inline-label">Leave Accrued as at</label>
+                <input type="date" id="leaveAccruedDate" class="form-inline-input w-32 mr-2" aria-label="Leave Accrued as at Date">
+                <span class="mr-4">=</span>
+                <input type="text" id="leaveAccruedDays" class="form-inline-input w-24 text-center" aria-label="Leave Accrued Working Days">
+                <span class="ml-2">W/Days</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                <div class="flex items-center">
+                    <label for="hcSignature" class="form-inline-label">Signature</label>
+                    <input type="text" id="hcSignature" class="form-inline-input flex-grow" aria-label="HC Signature">
+                </div>
+                <div class="flex items-center">
+                    <label for="hcDate" class="form-inline-label">Date</label>
+                    <input type="date" id="hcDate" class="form-inline-input" aria-label="HC Date">
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-3 border-t-2 border-gray-200">
+
+        <div class="mb-4">
+            <h2 class="form-section-title text-left">4. <span class="font-bold">DEPARTMENT/SECTION</span></h2>
+            <p class="text-sm text-gray-600 mb-2 italic">(Check latest leave balance sheet updated by Payroll)</p>
+            <div class="mb-2 flex items-center">
+                <span class="form-inline-label">Leave recommended:</span>
+                <label class="ml-2"><input type="radio" name="leaveRecommended" value="yes" class="mr-1"> YES</label>
+                <label class="ml-4"><input type="radio" name="leaveRecommended" value="no" class="mr-1"> NO</label>
+                <span class="ml-4 mr-2">If NO, give reason</span>
+                <input type="text" class="form-inline-input flex-grow" aria-label="Reason if not recommended">
+            </div>
+            <div class="mb-2 flex items-center">
+                <span class="form-inline-label">Approved:</span>
+                <label class="ml-2"><input type="radio" name="leaveApproved" value="yes" class="mr-1"> YES</label>
+                <label class="ml-4"><input type="radio" name="leaveApproved" value="no" class="mr-1"> NO</label>
+            </div>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 items-end">
+                <div class="flex flex-col">
+                    <input type="text" class="form-inline-input w-full mb-1" aria-label="Supervisor HOD Name">
+                    <label class="text-sm font-medium text-gray-700 text-center">SUPERVISOR/ HOD (NAME)</label>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="flex flex-col">
+                        <input type="text" class="form-inline-input w-full mb-1" aria-label="Supervisor Signature">
+                        <label class="text-sm font-medium text-gray-700 text-center">SIGNATURE</label>
+                    </div>
+                    <div class="flex flex-col">
+                        <input type="date" class="form-inline-input w-full mb-1" aria-label="Supervisor Date">
+                        <label class="text-sm font-medium text-gray-700 text-center">DATE</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-3 border-t-2 border-gray-200">
+
+        <div class="mb-4">
+            <h2 class="form-section-title text-left">5. <span class="font-bold">UPDATE ON LEAVE BALANCE</span></h2>
+            <div class="mb-2 flex items-center">
+                <span class="form-inline-label">a. No of leave days being taken as at date of this application =</span>
+                <input type="text" class="form-inline-input w-24 text-center" aria-label="Leave days taken">
+                <span class="ml-2">W/Days</span>
+            </div>
+            <div class="mb-2 flex items-center">
+                <span class="form-inline-label">b. <span class="font-bold">Total number of leave days balance at end of leave</span> =</span>
+                <input type="text" class="form-inline-input w-24 text-center" aria-label="Leave balance at end of leave">
+                <span class="ml-2">W/Days</span>
+            </div>
+            <div class="mb-2 flex items-center">
+                <span class="form-inline-label">c. <span class="font-bold">TOTAL LEAVE APPROVED ON FULL PAY |NO PAY|</span> =</span>
+                <input type="text" class="form-inline-input w-24 text-center" aria-label="Total leave approved">
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 items-end">
+                <div class="flex flex-col">
+                    <input type="text" class="form-inline-input w-full mb-1" aria-label="Actioned by">
+                    <label class="text-sm font-medium text-gray-700 text-center">Actioned by</label>
+                </div>
+                <div class="flex flex-col">
+                    <input type="text" class="form-inline-input w-full mb-1" aria-label="Department Actioned By">
+                    <label class="text-sm font-medium text-gray-700 text-center">HCD/PAYROLL/FINANCE</label>
+                </div>
+            </div>
+
+            <div class="flex justify-between text-sm mt-4">
+                <div>
+                    <p>Filing, HC department</p>
+                    <p>Personal Copy</p>
+                </div>
+                <div>
+                    <p>Filing, Finance</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-3 border-t-2 border-gray-200">
+
+        <div class="text-right text-xs text-gray-500 mt-4">
+            <p>Effective Date: 24/03/2025</p>
+            <p>Revision No. 4</p>
+        </div>
+
+    </div>
+</body>
+</html>
